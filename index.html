@@ -63,6 +63,10 @@
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); //select the whole element which is pressed by key
 
         if (!audio) return; //if no audio then immediately return from function
+        if (key.classList.contains("playing")) {
+          key.classList.remove("playing");
+          return;
+        }
         key.classList.add("playing"); //add css class on selected element
         audio.currentTime = 0; //set time of audio to zero every time key click audio playing from start
         audio.play(); // function for playing audio
